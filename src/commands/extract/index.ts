@@ -16,10 +16,8 @@ export class Extract extends BaseCommand {
   static description = 'describe the command here';
 
   static examples = [
-    '$ snyk-vuln-ignore ignore --vuln',
-    '$ snyk-vuln-ignore ignore --org 123-123-123 --license --vuln',
-    '$ snyk-vuln-ignore ignore -o 123-123-123 -lv',
-    '$ snyk-vuln-ignore ignore --all -fp',
+    '$ snyk-license-extractor extract -o=ORG_ID',
+    '$ snyk-license-extractor extract -o=ORG_ID -p=PROJECT_ID',
   ];
 
   static flags = {
@@ -87,7 +85,7 @@ export class Extract extends BaseCommand {
 
     for (const p of projectList) {
       console.log(chalk.bold('Project: ' +projectNames.get(p[0])));
-      for (const l of p[1]){
+      for (const l of Array.from(p[1]).sort()){
         // emoji.get('arrow_forward')
         console.log(emoji.point_right + ' ' + l);
       }
