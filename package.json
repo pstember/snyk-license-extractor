@@ -1,0 +1,71 @@
+{
+  "name": "snyk-license-extractor",
+  "description": "Extract a lit of licenses in an htlm report",
+  "version": "0.0.0",
+  "author": "Philippe Stemberger (philippe.stemberger@snyk.io)",
+  "bin": {
+    "snyk-license-extractor": "./bin/run"
+  },
+  "bugs": "https://github.com/pstember/snyk-license-extractor/issues",
+  "dependencies": {
+    "@oclif/command": "^1.6.0",
+    "@oclif/config": "^1.15.1",
+    "@oclif/errors": "^1.2.2",
+    "@oclif/parser": "^3.8.4",
+    "@oclif/plugin-help": "^2.2.3",
+    "@oclif/plugin-not-found": "^1.2.3",
+    "@snyk/configstore": "^3.2.0-rc1",
+    "@types/node-emoji": "^1.8.1",
+    "debug": "^4.1.1",
+    "needle": "^2.4.1",
+    "node-emoji": "^1.10.0",
+    "snyk-config": "^3.1.0",
+    "tslib": "^1.11.1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.22.2",
+    "@types/jest": "^25.2.1",
+    "@types/needle": "^2.0.4",
+    "@types/node": "^10.17.21",
+    "eslint": "^5.16.0",
+    "eslint-config-oclif": "^3.1.0",
+    "eslint-config-oclif-typescript": "^0.1.0",
+    "globby": "^10.0.2",
+    "jest": "^25.5.4",
+    "nock": "^12.0.3",
+    "ts-jest": "^25.4.0",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/pstember/snyk-license-extractor",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "snyk-license-extractor",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "pstember/snyk-license-extractor",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts"
+}
