@@ -11,7 +11,7 @@ export interface Org {
 
 export interface Issues {
   readonly vulnerabilities: Vulnerability[];
-  readonly licenses: IssueLicense[];
+  readonly licenses: EmbeddedLicense[];
 }
 
 export interface Issue {
@@ -34,6 +34,16 @@ export interface License {
 
 export type Severity = 'low' | 'medium' | 'high';
 
-export interface IssueLicense extends Issue {
+export interface EmbeddedLicense extends Issue {
   title: string;
+  license: string;
+}
+
+export interface Dependency {
+  readonly id: string;
+  readonly name: string;
+  readonly version: string;
+  readonly licenses :EmbeddedLicense[];
+  readonly projects: Project[];
+  readonly copyright: string[];
 }
